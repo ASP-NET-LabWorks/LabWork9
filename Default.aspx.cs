@@ -11,7 +11,12 @@ namespace LabWork9
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            LabelLoadTime.Text = DateTime.Now.ToLongTimeString();
+        }
 
+        protected void UpdatePanel1_Load(object sender, EventArgs e)
+        {
+            Label1.Text = DateTime.Now.ToLongTimeString();
         }
     }
 }
