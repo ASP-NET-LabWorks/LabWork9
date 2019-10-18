@@ -94,13 +94,13 @@ namespace LabWork9 {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// CheckBoxList1 элемент управления.
+        /// CheckBoxList элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList1;
+        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList;
         
         /// <summary>
         /// UpdatePanel4 элемент управления.
@@ -121,13 +121,13 @@ namespace LabWork9 {
         protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// RadioButtonList1 элемент управления.
+        /// RadioButtonList элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList;
         
         /// <summary>
         /// UpdatePanel5 элемент управления.

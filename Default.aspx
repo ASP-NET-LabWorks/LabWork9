@@ -6,8 +6,10 @@
         const pm = Sys.WebForms.PageRequestManager.getInstance()
 
         function endRequest(sender, args) {
-            if (args.get_error())
+            if (args.get_error()) {
+                args.set_errorHandled(true)
                 document.getElementById("error").innerText = "Ошибка обработана"
+            }
         }
 
         function pageLoad() {
@@ -31,11 +33,11 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <asp:UpdatePanel ID="UpdatePanel1" runat="server" OnLoad="UpdatePanel1_Load" UpdateMode="Conditional">
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server" OnLoad="UpdatePanelGeneric_Load" UpdateMode="Conditional">
                             <ContentTemplate>
                                 <asp:Label CssClass="lead" ID="Label1" runat="server"></asp:Label>
                                 <hr />
-                                <asp:Button CssClass="btn btn-primary" runat="server" Text="↻" />
+                                <asp:Button CssClass="btn btn-primary" runat="server" Text="⟳" />
                             </ContentTemplate>
                             <Triggers>
                                 <asp:AsyncPostBackTrigger ControlID="ButtonReloadAll" />
@@ -54,7 +56,7 @@
                                 <div class="input-group">
                                     <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server"></asp:TextBox>
                                     <div class="input-group-append">
-                                        <asp:Button CssClass="btn btn-primary" runat="server" Text="↻" />
+                                        <asp:Button CssClass="btn btn-primary" runat="server" Text="⟳" />
                                     </div>
                                 </div>
                             </ContentTemplate>
@@ -72,10 +74,10 @@
                             <ContentTemplate>
                                 <asp:Label CssClass="lead" ID="Label3" runat="server"></asp:Label>
                                 <hr />
-                                <asp:CheckBoxList ID="CheckBoxList1" runat="server" RepeatDirection="Horizontal" AutoPostBack="true">
-                                    <asp:ListItem Value="A" Text="A"></asp:ListItem>
-                                    <asp:ListItem Value="B" Text="B"></asp:ListItem>
-                                    <asp:ListItem Value="C" Text="C"></asp:ListItem>
+                                <asp:CheckBoxList ID="CheckBoxList" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" AutoPostBack="true">
+                                    <asp:ListItem Value="A" Text="&nbsp;A" class="mr-3"></asp:ListItem>
+                                    <asp:ListItem Value="B" Text="&nbsp;B" class="mr-3"></asp:ListItem>
+                                    <asp:ListItem Value="C" Text="&nbsp;C"></asp:ListItem>
                                 </asp:CheckBoxList>
                             </ContentTemplate>
                             <Triggers>
@@ -92,10 +94,10 @@
                             <ContentTemplate>
                                 <asp:Label CssClass="lead" ID="Label4" runat="server"></asp:Label>
                                 <hr />
-                                <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" AutoPostBack="true">
-                                    <asp:ListItem Value="1" Text="1" Selected="True"></asp:ListItem>
-                                    <asp:ListItem Value="2" Text="2"></asp:ListItem>
-                                    <asp:ListItem Value="3" Text="3"></asp:ListItem>
+                                <asp:RadioButtonList ID="RadioButtonList" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" AutoPostBack="true">
+                                    <asp:ListItem Value="1" Text="&nbsp;1" Selected="True" class="mr-3"></asp:ListItem>
+                                    <asp:ListItem Value="2" Text="&nbsp;2" class="mr-3"></asp:ListItem>
+                                    <asp:ListItem Value="3" Text="&nbsp;3"></asp:ListItem>
                                 </asp:RadioButtonList>
                             </ContentTemplate>
                             <Triggers>
@@ -110,13 +112,13 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <asp:UpdatePanel ID="UpdatePanel5" runat="server" OnLoad="UpdatePanel5_Load" UpdateMode="Conditional">
+                        <asp:UpdatePanel ID="UpdatePanel5" runat="server" OnLoad="UpdatePanelGeneric_Load" UpdateMode="Conditional">
                             <ContentTemplate>
                                 <asp:Label CssClass="lead" ID="Label5" runat="server"></asp:Label>
                                 <hr />
                                 <div class="row">
                                     <div class="col">
-                                        <asp:Button ID="ButtonError" OnClick="ButtonError_Click" CssClass="btn btn-danger" runat="server" Text="!" />
+                                        <asp:Button ID="ButtonError" OnClick="ButtonError_Click" CssClass="btn btn-danger" runat="server" Text="⚠" />
                                     </div>
                                     <div class="col-8 text-center">
                                         <p class="text-danger" id="error"></p>
@@ -133,7 +135,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <asp:UpdatePanel ID="UpdatePanel6" runat="server" OnLoad="UpdatePanel6_Load" UpdateMode="Conditional">
+                        <asp:UpdatePanel ID="UpdatePanel6" runat="server" OnLoad="UpdatePanelGeneric_Load" UpdateMode="Conditional">
                             <ContentTemplate>
                                 <asp:Label CssClass="lead" ID="Label6" runat="server"></asp:Label>
                                 <hr />
@@ -163,7 +165,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <asp:UpdatePanel ID="UpdatePanel7" runat="server" OnLoad="UpdatePanel7_Load" UpdateMode="Conditional">
+                        <asp:UpdatePanel ID="UpdatePanel7" runat="server" OnLoad="UpdatePanelGeneric_Load" UpdateMode="Conditional">
                             <ContentTemplate>
                                 <asp:Label CssClass="lead" ID="Label7" runat="server"></asp:Label>
                                 <hr />
@@ -180,7 +182,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <asp:UpdatePanel ID="UpdatePanel8" runat="server" OnLoad="UpdatePanel8_Load" UpdateMode="Conditional">
+                        <asp:UpdatePanel ID="UpdatePanel8" runat="server" OnLoad="UpdatePanelGeneric_Load" UpdateMode="Conditional">
                             <ContentTemplate>
                                 <asp:Label CssClass="lead" ID="Label8" runat="server"></asp:Label>
                                 <hr />

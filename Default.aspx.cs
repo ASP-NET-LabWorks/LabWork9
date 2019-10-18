@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text.RegularExpressions;
 
 namespace LabWork9
 {
@@ -14,10 +15,21 @@ namespace LabWork9
             LabelLoadTime.Text = DateTime.Now.ToLongTimeString();
         }
 
-        protected void UpdatePanel1_Load(object sender, EventArgs e)
+        protected void UpdatePanelGeneric_Load(object sender, EventArgs e)
         {
-            Label1.Text = DateTime.Now.ToLongTimeString();
+            try
+            {
+                var panel = (UpdatePanel)sender;
+                var targetLabelID = $"Label{Regex.Match(panel.ID, @"\d+").Value}";
+                var label = (Label)panel.Parent.FindControl(targetLabelID);
+                label.Text = DateTime.Now.ToLongTimeString();
+            }
+            catch (Exception error)
+            {
+                Response.Write(error.Message);
+            }
         }
+
         protected void UpdatePanel2_Load(object sender, EventArgs e)
         {
             Label2.Text = $"{DateTime.Now.ToLongTimeString()}: {TextBox1.Text}";
@@ -25,30 +37,14 @@ namespace LabWork9
         protected void UpdatePanel3_Load(object sender, EventArgs e)
         {
             var selected = new List<string>();
-            foreach (ListItem i in CheckBoxList1.Items)
+            foreach (ListItem i in CheckBoxList.Items)
                 if (i.Selected)
                     selected.Add(i.Value);
             Label3.Text = $"{DateTime.Now.ToLongTimeString()}: {string.Join(", ", selected)}";
         }
         protected void UpdatePanel4_Load(object sender, EventArgs e)
         {
-            Label4.Text = $"{DateTime.Now.ToLongTimeString()}: {RadioButtonList1.SelectedValue}";
-        }
-        protected void UpdatePanel5_Load(object sender, EventArgs e)
-        {
-            Label5.Text = DateTime.Now.ToLongTimeString();
-        }
-        protected void UpdatePanel6_Load(object sender, EventArgs e)
-        {
-            Label6.Text = DateTime.Now.ToLongTimeString();
-        }
-        protected void UpdatePanel7_Load(object sender, EventArgs e)
-        {
-            Label7.Text = DateTime.Now.ToLongTimeString();
-        }
-        protected void UpdatePanel8_Load(object sender, EventArgs e)
-        {
-            Label8.Text = DateTime.Now.ToLongTimeString();
+            Label4.Text = $"{DateTime.Now.ToLongTimeString()}: {RadioButtonList.SelectedValue}";
         }
 
         protected void ButtonError_Click(object sender, EventArgs e)
